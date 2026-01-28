@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRM Career Centre - Global Skills for Global Placements</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+   <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner" id="topBanner"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img id="siteLogo" class="logo" src="" alt="SRM Logo">
+            </div>
+            <div class="nav-menu" id="navMenu"></div>
+            <div class="nav-buttons" id="navButtons"></div>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <h3>Menu</h3>
+            <div class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="mobile-menu-content" id="mobileMenuContent"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        
+    </section>
+
+    <!-- Gateway Section -->
+    <section class="gateway">
+        <div class="container" id="gatewaySection"></div>
+    </section>
+
+    <!-- Director's Message -->
+    <section class="director-message">
+        <div class="container" id="directorSection"></div>
+    </section>
+
+    <!-- Recruiters -->
+    <section class="recruitment-container">
+        <h1 class="recruitment-title">Glimpse Of Our Recruiters</h1>
+        <div class="recruitment-title-underline"></div>
+
+        <!-- First Swiper - Left to Right -->
+        <div class="recruitment-swiper-section">
+            <div class="recruitment-swiper-container" id="recruitment-swiper-1">
+                <div class="recruitment-swiper-wrapper" id="recruitment-wrapper-1">
+                    <!-- Slides will be dynamically generated -->
+                </div>
+                <div class="swiper-button-prev recruitment-button-prev" onclick="prevSlide(2)"></div>
+                <div class="swiper-button-next recruitment-button-next" onclick="nextSlide(2)"></div>
+            </div>
+        </div>
+
+        <!-- Second Swiper - Right to Left -->
+        <div class="recruitment-swiper-section">
+            <div class="recruitment-swiper-container" id="recruitment-swiper-2">
+                <div class="recruitment-swiper-wrapper" id="recruitment-wrapper-2">
+                    <!-- Slides will be dynamically generated -->
+                </div>
+                <div class="swiper-button-prev recruitment-button-prev" onclick="prevSlide(2)"></div>
+                <div class="swiper-button-next recruitment-button-next" onclick="nextSlide(2)"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why SRM -->
+    <section class="why-srm">
+        <div class="container" id="whySRMSection"></div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Testimonials</h2>
+            <div class="swiper testimonial-swiper">
+                <div class="swiper-wrapper" id="testimonialsWrapper"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey -->
+    <section class="journey">
+        <div class="container" id="journeySection"></div>
+    </section>
+
+    <!-- Reach Us -->
+    <section class="reach-us">
+        <div class="container" id="reachUsSection"></div>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <footer class="srm-footer">
+  <div class="footer-container">
+
+    <!-- Left Column -->
+    <div class="footer-col logo-col">
+      <img src="./assets/images/srm-1920w.webp" alt="SRM Trichy" class="footer-logo">
+
+      <p>
+        SRM Institute of Science & Technology (SRMIST) Tiruchirappalli Campus,
+        Deemed to be University (Formerly SRM University)
+        SRM Nagar, Trichy–Chennai Highway, Near Samayapuram,
+        Trichy – 621105, Tamil Nadu, India.
+      </p>
+
+      <p class="phone">1800 202 4565</p>
+
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-threads"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <!-- Middle Column -->
+    <div class="footer-col">
+      <h4>Academic courses</h4>
+      <a href="#">About us</a>
+      <a href="#">Academics</a>
+      <a href="#">Research</a>
+      <a href="#">Home</a>
+      <a href="#">News & Events</a>
+      <a href="#">Placement</a>
+    </div>
+
+    <!-- Right Column -->
+    <div class="footer-col">
+      <h4>Academic courses</h4>
+        <a href="#">Students</a>
+        <a href="#">Faculty & Staff</a>
+        <a href="#">Examinations</a>
+        <a href="#">Parents</a>
+        <a href="#">Alumni</a>
+        <a href="#">News letter</a>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="footer-col newsletter">
+      <h3>Stay In Touch With Us</h3>
+      <input type="email" placeholder="Enter Your Email">
+      <button>Send Message</button>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 All Rights Reserved | SRM
+  </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/swiper.js"></script>
+</body>
+</html>
