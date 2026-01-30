@@ -1,0 +1,78 @@
+
+/* Breadcrum-Hero Section */
+.breadcrum-hero {
+    position: relative;
+    height: 400px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 400"><rect fill="%23003b7a" width="1920" height="400"/><rect fill="%230052a3" opacity="0.7" width="300" height="400" x="0"/><rect fill="%230052a3" opacity="0.7" width="300" height="400" x="400"/><rect fill="%230052a3" opacity="0.7" width="300" height="400" x="800"/><rect fill="%230052a3" opacity="0.7" width="300" height="400" x="1200"/><rect fill="%230052a3" opacity="0.7" width="300" height="400" x="1600"/></svg>');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.breadcrum-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 59, 122, 0.7);
+}
+
+.breadcrum-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 59, 122, 0.5), rgba(0, 40, 85, 0.8));
+}
+
+.breadcrum-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+}
+
+.breadcrum-hero h1 {
+    font-size: 3.5rem;
+    color: var(--white);
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.breadcrumb {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.breadcrumb a:hover {
+    color: var(--accent-gold);
+}
+
+.breadcrumb .separator {
+    color: var(--white);
+    opacity: 0.7;
+}

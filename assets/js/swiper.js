@@ -1,134 +1,219 @@
-const topCompanies = [
-            { name: 'Akamai', class: 'recruitment-akamai', html: 'Akamai' },
-            { name: 'ALSTOM', class: 'recruitment-alstom', html: 'ALST<span class="recruitment-o-letter">O</span>M' },
-            { name: 'amadeus', class: 'recruitment-amadeus', html: 'amadeus' },
-            { name: 'amazon', class: 'recruitment-amazon', html: 'amazon' },
-            { name: 'ANAND', class: 'recruitment-anand', html: 'ANAND' },
-            { name: 'AstraZeneca', class: 'recruitment-astrazeneca', html: 'AstraZeneca' },
-            { name: 'Akamai', class: 'recruitment-akamai', html: 'Akamai' },
-            { name: 'ALSTOM', class: 'recruitment-alstom', html: 'ALST<span class="recruitment-o-letter">O</span>M' },
-            { name: 'amadeus', class: 'recruitment-amadeus', html: 'amadeus' },
-        ];
+let imgLenTop=58;
+let imgLenBottom=57;
 
-        const bottomCompanies = [
-            { name: 'wipro', class: 'recruitment-wipro', html: 'wipro' },
-            { name: 'Western Digital', class: 'recruitment-western-digital', html: 'Western Digital' },
-            { name: 'WELLS FARGO', class: 'recruitment-wells-fargo', html: 'WELLS FARGO' },
-            { name: 'Wabtec', class: 'recruitment-wabtec', html: 'Wabtec' },
-            { name: 'VOLVO', class: 'recruitment-volvo', html: 'VOLVO' },
-            { name: 'Volante', class: 'recruitment-volante', html: 'Volante' },
-            { name: 'wipro', class: 'recruitment-wipro', html: 'wipro' },
-            { name: 'Western Digital', class: 'recruitment-western-digital', html: 'Western Digital' },
-            { name: 'WELLS FARGO', class: 'recruitment-wells-fargo', html: 'WELLS FARGO' },
-        ];
+/* SWIPER FACTORY */
+function AdvancedSwiper({
+    trackId,
+    companies,
+    prevBtn,
+    nextBtn,
+    auto = true,
+    interval = 2500,
+    direction = 1
+}) {
+    const names = companies.split("--");
+    const folder = names[0];
+    const total = Number(names[1]);
 
-        // Swiper state
-        const swiperState = {
-            1: { currentIndex: 0, autoplayInterval: null, direction: 1 }, // left to right
-            2: { currentIndex: 0, autoplayInterval: null, direction: -1 } // right to left
-        };
+    const track = document.getElementById(trackId);
+    const viewport = track.parentElement;
 
-        // Initialize swipers
-        function initSwiper(swiperId, companies) {
-            const wrapper = document.getElementById(`recruitment-wrapper-${swiperId}`);
-            
-            // Create slides
-            companies.forEach(company => {
-                const slide = document.createElement('div');
-                slide.className = 'recruitment-swiper-slide';
-                slide.innerHTML = `
-                    <div class="recruitment-logo-card ${company.class}">
-                        ${company.html}
-                    </div>
-                `;
-                wrapper.appendChild(slide);
-            });
+    let index = total; // 👈 start in middle
+    let timer = null;
 
-            // Start autoplay
-            startAutoplay(swiperId);
+    let isDragging = false;
+    let startX = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+
+    track.style.transition = 'transform 0.4s ease';
+
+    /* CREATE SLIDES (CLONED) */
+    function createSlides() {
+        // last clone
+        for (let i = 1; i <= total; i++) {
+            const slide = createSlide(i);
+            track.appendChild(slide);
         }
 
-        // Move to specific slide
-        function moveToSlide(swiperId, index) {
-            const wrapper = document.getElementById(`recruitment-wrapper-${swiperId}`);
-            const slides = wrapper.querySelectorAll('.recruitment-swiper-slide');
-            const slideWidth = slides[0].offsetWidth + 40; // width + margin
-            
-            // Update index
-            swiperState[swiperId].currentIndex = index;
-            
-            // Apply transform
-            wrapper.style.transform = `translateX(-${index * slideWidth}px)`;
+        // real slides
+        for (let i = 1; i <= total; i++) {
+            const slide = createSlide(i);
+            track.appendChild(slide);
         }
 
-        // Next slide
-        function nextSlide(swiperId) {
-            const wrapper = document.getElementById(`recruitment-wrapper-${swiperId}`);
-            const slides = wrapper.querySelectorAll('.recruitment-swiper-slide');
-            const maxIndex = slides.length - Math.floor(wrapper.parentElement.offsetWidth / (slides[0].offsetWidth + 40));
-            
-            let newIndex = swiperState[swiperId].currentIndex + 1;
-            if (newIndex > maxIndex) {
-                newIndex = 0;
-            }
-            
-            moveToSlide(swiperId, newIndex);
-            resetAutoplay(swiperId);
+        // first clone
+        for (let i = 1; i <= total; i++) {
+            const slide = createSlide(i);
+            track.appendChild(slide);
         }
+    }
 
-        // Previous slide
-        function prevSlide(swiperId) {
-            const wrapper = document.getElementById(`recruitment-wrapper-${swiperId}`);
-            const slides = wrapper.querySelectorAll('.recruitment-swiper-slide');
-            const maxIndex = slides.length - Math.floor(wrapper.parentElement.offsetWidth / (slides[0].offsetWidth + 40));
-            
-            let newIndex = swiperState[swiperId].currentIndex - 1;
-            if (newIndex < 0) {
-                newIndex = maxIndex;
-            }
-            
-            moveToSlide(swiperId, newIndex);
-            resetAutoplay(swiperId);
+    function createSlide(i) {
+        const slide = document.createElement('div');
+        slide.className = 'recruitment-swiper-slide';
+        slide.innerHTML = `
+            <div class="recruitment-logo-card">
+                <img src="./assets/images/logos/${folder}/${i}.jpg">
+            </div>
+        `;
+        slide.onclick = () => openModal(folder, total, i);
+        return slide;
+    }
+
+    createSlides();
+
+    function slideWidth() {
+        return track.children[0].offsetWidth + 40;
+    }
+
+    function update(animate = true) {
+        track.style.transition = animate ? 'transform 0.4s ease' : 'none';
+        currentTranslate = -index * slideWidth();
+        track.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function checkLoop() {
+        if (index >= total * 2) {
+            index = total;
+            update(false);
         }
-
-        // Start autoplay
-        function startAutoplay(swiperId) {
-            const direction = swiperState[swiperId].direction;
-            
-            swiperState[swiperId].autoplayInterval = setInterval(() => {
-                if (direction === 1) {
-                    nextSlide(swiperId);
-                } else {
-                    prevSlide(swiperId);
-                }
-            }, 3000);
+        if (index < total) {
+            index = total * 2 - 1;
+            update(false);
         }
+    }
 
-        // Reset autoplay
-        function resetAutoplay(swiperId) {
-            clearInterval(swiperState[swiperId].autoplayInterval);
-            startAutoplay(swiperId);
-        }
+    function next() {
+        index++;
+        update();
+        setTimeout(checkLoop, 410);
+    }
 
-        // Initialize both swipers
-        initSwiper(1, topCompanies);
-        initSwiper(2, bottomCompanies);
+    function prev() {
+        index--;
+        update();
+        setTimeout(checkLoop, 410);
+    }
 
-        // Pause on hover
-        document.querySelectorAll('.recruitment-swiper-container').forEach((container, index) => {
-            const swiperId = index + 1;
-            
-            container.addEventListener('mouseenter', () => {
-                clearInterval(swiperState[swiperId].autoplayInterval);
-            });
-            
-            container.addEventListener('mouseleave', () => {
-                startAutoplay(swiperId);
-            });
-        });
+    /* AUTO SCROLL */
+    function startAuto() {
+        if (!auto) return;
+        stopAuto();
+        timer = setInterval(() => {
+            direction === 1 ? next() : prev();
+        }, interval);
+    }
 
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            moveToSlide(1, swiperState[1].currentIndex);
-            moveToSlide(2, swiperState[2].currentIndex);
-        });
+    function stopAuto() {
+        if (timer) clearInterval(timer);
+    }
+
+    /* ARROWS */
+    document.getElementById(prevBtn).onclick = () => {
+        stopAuto(); prev(); startAuto();
+    };
+
+    document.getElementById(nextBtn).onclick = () => {
+        stopAuto(); next(); startAuto();
+    };
+
+    /* DRAG SUPPORT */
+    viewport.addEventListener('mousedown', e => {
+        isDragging = true;
+        startX = e.pageX;
+        prevTranslate = currentTranslate;
+        stopAuto();
+        track.style.transition = 'none';
+    });
+
+    window.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        const delta = e.pageX - startX;
+        track.style.transform = `translateX(${prevTranslate + delta}px)`;
+    });
+
+    window.addEventListener('mouseup', e => {
+        if (!isDragging) return;
+        isDragging = false;
+        const moved = e.pageX - startX;
+
+        track.style.transition = 'transform 0.4s ease';
+
+        if (moved < -50) next();
+        else if (moved > 50) prev();
+        else update();
+
+        startAuto();
+    });
+
+    viewport.addEventListener('mouseenter', stopAuto);
+    viewport.addEventListener('mouseleave', startAuto);
+
+    window.addEventListener('resize', () => update(false));
+
+    update(false);
+    startAuto();
+}
+
+AdvancedSwiper({
+    trackId: 'swiper-top',
+    companies: "top--"+imgLenTop,
+    prevBtn: 'top-prev',
+    nextBtn: 'top-next',
+    auto: true,
+    interval: 1500,
+    direction: 1
+});
+
+AdvancedSwiper({
+    trackId: 'swiper-bottom',
+    companies: "bottom--"+imgLenBottom,
+    prevBtn: 'bottom-prev',
+    nextBtn: 'bottom-next',
+    auto: true,
+    interval: 1500,
+    direction: 1
+});
+
+/* MODAL */
+let modalIndex = 1;
+let modalFolder = '';
+let modalTotal = 0;
+
+const modal = document.getElementById('logoModal');
+const modalImg = document.getElementById('modalImage');
+
+function openModal(folder, total, index) {
+    modalFolder = folder;
+    modalTotal = Number(total);
+    modalIndex = index;
+
+    updateModalImage();
+    modal.style.display = 'flex';
+}
+
+function updateModalImage() {
+    modalImg.src = `./assets/images/logos/${modalFolder}/${modalIndex}.jpg`;
+}
+
+function changeModal(dir) {
+    modalIndex += dir;
+
+    if (modalIndex < 1) modalIndex = modalTotal;
+    if (modalIndex > modalTotal) modalIndex = 1;
+
+    updateModalImage();
+}
+
+document.querySelector('.modal-nav.left').onclick = () => changeModal(-1);
+document.querySelector('.modal-nav.right').onclick = () => changeModal(1);
+document.querySelector('.logo-modal .close').onclick = () => modal.style.display = 'none';
+
+document.addEventListener('keydown', e => {
+    if (modal.style.display !== 'flex') return;
+
+    if (e.key === 'Escape') modal.style.display = 'none';
+    if (e.key === 'ArrowLeft') changeModal(-1);
+    if (e.key === 'ArrowRight') changeModal(1);
+});

@@ -6,6 +6,7 @@
     <title>SRM Career Centre - Global Skills for Global Placements</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+   <link rel="stylesheet" href="./assets/css/header.css">
    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
@@ -29,6 +30,19 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-header">
+            <div class="nav-brand" style="margin: 10px;">
+                <img  class="logo" src="./assets/images/srm-1920w.webp" alt="SRM Logo">
+            </div>
+            <div class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="mobile-menu-content" id="mobileMenuContent"></div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
             <h3>Menu</h3>
             <div class="mobile-menu-close" id="mobileMenuClose">
                 <i class="fas fa-times"></i>
@@ -37,9 +51,44 @@
         <div class="mobile-menu-content" id="mobileMenuContent"></div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        
+    <section class="placement-stats">
+        <div class="container">
+            <h3 class="placement-title">
+                GLOBAL SKILLS FOR GLOBAL PLACEMENTS - 2026
+            </h3>
+
+            <div class="job-offer">
+                <span>Job Offers</span>
+                <strong>14,030+</strong>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stats-card">
+                    <p>Companies Visited</p>
+                    <h4 class="stats-count" data-target="2193">2193+</h4>
+                </div>
+
+
+                <div class="stats-card">
+                    <p>Highest Salary</p>
+                    <h4><span  class="stats-count" data-target="65">65</span> <span class="lpa">LPA</span></h4>
+                </div>
+
+
+                <div class="stats-card">
+                    <p>Global Offers</p>
+                    <h4 class="stats-count" data-target="47">47+</h4>
+                </div>
+
+
+                <div class="stats-card">
+                    <p>20 LPA & Above</p>
+                    <h4 class="stats-count" data-target="202">202+</h4>
+                </div>
+            </div>
+
+            <p class="note">*2026 Batch (As on 3<sup>rd</sup> January 2026)</p>
+        </div>
     </section>
 
     <!-- Gateway Section -->
@@ -82,77 +131,37 @@
     <section class="recruitment-container">
         <h1 class="recruitment-title">Glimpse Of Our Recruiters</h1>
         <div class="recruitment-title-underline"></div>
+        
+        <div class="recruitment-swiper-container">
+            <button id="top-prev" class="nav-btn1 left">
+                <i class="fa fa-chevron-left"></i>
+            </button>
 
-        <!-- First Swiper - Left to Right -->
-        <div class="recruitment-swiper-section">
-            <div class="recruitment-swiper-container" id="recruitment-swiper-1">
-                <div class="recruitment-swiper-wrapper" id="recruitment-wrapper-1">
-                    <!-- Slides will be dynamically generated -->
-                </div>
-                <div class="swiper-button-prev recruitment-button-prev" onclick="prevSlide(1)"></div>
-                <div class="swiper-button-next recruitment-button-next" onclick="nextSlide(1)"></div>
+            <div class="recruitment-viewport">
+                <div class="recruitment-track" id="swiper-top"></div>
             </div>
+
+            <button id="top-next" class="nav-btn1 right">
+                <i class="fa fa-chevron-right"></i>
+            </button>
         </div>
 
-        <!-- Second Swiper - Right to Left -->
-        <div class="recruitment-swiper-section">
-            <div class="recruitment-swiper-container" id="recruitment-swiper-2">
-                <div class="recruitment-swiper-wrapper" id="recruitment-wrapper-2">
-                    <!-- Slides will be dynamically generated -->
-                </div>
-                <div class="swiper-button-prev recruitment-button-prev" onclick="prevSlide(2)"></div>
-                <div class="swiper-button-next recruitment-button-next" onclick="nextSlide(2)"></div>
+        <div class="recruitment-swiper-container">
+            <button id="bottom-prev" class="nav-btn1 left">
+                <i class="fa fa-chevron-left"></i>
+            </button>
+
+            <div class="recruitment-viewport">
+                <div class="recruitment-track" id="swiper-bottom"></div>
             </div>
+
+            <button id="bottom-next" class="nav-btn1 right">
+                <i class="fa fa-chevron-right"></i>
+            </button>
         </div>
-    </section>
 
-    <!-- Placement Cell – Who is Who -->
-    <section class="placement-team" style="border-top:1px solid #e3e3e3;">
-        <div class="container">
-            <h2 class="section-title">Placement Cell</h2>
-
-            <div class="placement-team-grid">
-                <!-- Card 1 -->
-                <div class="placement-card">
-                    <h3>Dr. R. Srinivasan</h3>
-                    <p class="designation">Dean Placement,SRM IST </p>
-
-                    <div class="card-divider"></div>
-
-                    <div class="contact-icons">
-                        <a href="mailto:placement@srmtrichy.edu.in"><i class="fas fa-envelope"></i></a>
-                        <a href="#"><i class="fas fa-phone"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="placement-card">
-                    <h3>U. Sanjay Pradeesan, M.C.A</h3>
-                    <p class="designation">Placement Executive, SRM IST</p>
-
-                    <div class="card-divider"></div>
-
-                    <div class="contact-icons">
-                        <a href="mailto:priya.k@srmtrichy.edu.in"><i class="fas fa-envelope"></i></a>
-                        <a href="#"><i class="fas fa-phone"></i></a>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="placement-card">
-                    <h3>M. Aswin Balaji B.E</h3>
-                    <p class="designation">Junior Placement Assistant, SRM IST</p>
-
-                    <div class="card-divider"></div>
-
-                    <div class="contact-icons">
-                        <a href="mailto:aravind@srmtrichy.edu.in"><i class="fas fa-envelope"></i></a>
-                        <a href="#"><i class="fas fa-phone"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- MODAL -->
+       
     </section>
 
 
@@ -276,9 +285,16 @@
     © 2026 All Rights Reserved | SRM
   </div>
 </footer>
+        <div class="logo-modal" id="logoModal">
+            <span class="close">×</span>
+            <button class="modal-nav left">‹</button>
+            <img id="modalImage">
+            <button class="modal-nav right">›</button>
+        </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/Navbar.js"></script>
     <script src="./assets/js/swiper.js"></script>
 </body>
 </html>

@@ -1,0 +1,357 @@
+/* Top Banner */
+.top-banner {
+    background-color: var(--primary-blue);
+   
+}
+.top-bar{
+    width: 70%;
+    color: var(--white);
+    text-align: center;
+    margin: 0 auto;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.apply-link {
+    color: var(--accent-gold);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.apply-link:hover {
+    text-decoration: underline;
+}
+
+/* Navigation */
+.navbar {
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.nav-brand .logo {
+    height: 70px ;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--secondary-blue);
+}
+
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-link i {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.apply-now-btn {
+    background-color: var(--accent-gold);
+    color: var(--text-dark);
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.apply-now-btn:hover {
+    background-color: #e5a716;
+    color: var(--text-dark);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btn {
+    background-color: var(--white);
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-blue);
+    transition: all 0.3s ease;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background-color: var(--white);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    z-index: 2000;
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+.mobile-menu-content {
+    padding: 70px 30px 30px;
+}
+
+.mobile-nav-link {
+    display: block;
+    color: var(--text-dark);
+    text-decoration: none;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--gray-medium);
+    font-size: 16px;
+}
+
+.mobile-nav-link:hover {
+    color: var(--secondary-blue);
+}
+
+.mobile-nav-dropdown .mobile-nav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobile-contact {
+    margin-top: 30px;
+    padding-top: 20px;
+}
+
+.mobile-contact h3 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.contact-link {
+    display: block;
+    color: var(--secondary-blue);
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.contact-link:hover {
+    text-decoration: underline;
+}
+
+/* Secondary Navigation */
+
+
+.secondary-nav-container {
+    max-width: 1400px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+    padding: 10px 0px;
+}
+
+.secondary-nav-container a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+
+.secondary-nav-container a:hover {
+    color: var(--accent-gold);
+}
+
+@media (max-width: 1024px) {
+    .nav-menu,
+    .nav-buttons {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+    }
+}
+@media (max-width: 768px) {
+    .secondary-nav-container {
+        display: none;
+    }
+}
+
+ .srm-footer {
+    background: var(--primary-blue);
+    color: #fff;
+    padding: 60px 30px 20px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .footer-container {
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 40px;
+    }
+
+    /* Logo column */
+    .footer-logo {
+    width: 160px;
+    margin-bottom: 20px;
+    }
+
+    .logo-col p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    color:#fff;
+    }
+
+    .phone {
+    font-weight: 600;
+    margin-bottom: 16px;
+    }
+
+/* Social icons */
+.social-icons{
+    display:flex;
+}
+.social-icons a {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Footer links */
+.footer-col h4 {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.footer-col a{
+  color: #e5e7eb;
+  text-decoration: none;
+  margin-bottom: 10px;
+  display:flex;
+}
+.footer-col a i{
+    font-size:28px;
+}
+.footer-col a:hover {
+  text-decoration: underline;
+}
+
+/* Newsletter */
+.newsletter h3 {
+  margin-bottom: 16px;
+  font-size: 22px;
+}
+
+.newsletter input {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.newsletter input::placeholder {
+  color: #cbd5e1;
+}
+
+.newsletter button {
+  padding: 12px 24px;
+  background: var(--secondary-blue);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.3);
+  margin-top: 40px;
+  padding-top: 14px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}

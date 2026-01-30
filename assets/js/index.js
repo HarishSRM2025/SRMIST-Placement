@@ -8,10 +8,37 @@
                 helpdeskEmail: "helpdesk@ist.srmtrichy.edu.in"
             },
 
-           
+            topBanner: {
+                message: "Admissions open for 2026",
+                applyLink: "#",
+                secondaryNav: [
+                    { label: "Students", url: "#" },
+                    { label: "Faculty & Staff", url: "#" },
+                    { label: "Examinations", url: "#" },
+                    { label: "Parents", url: "#" },
+                    { label: "Alumni", url: "#" },
+                    { label: "News letter", url: "#" }
+                ]
+            },
+
+            navigation: {
+                mainNav: [
+                    { label: "About us", url: "#", hasDropdown: false },
+                    { label: "Academics", url: "#", hasDropdown: true },
+                    { label: "Research", url: "#", hasDropdown: false },
+                    { label: "Campus Life", url: "#", hasDropdown: false },
+                    { label: "News & Events", url: "#", hasDropdown: false },
+                    { label: "Placement", url: "#", hasDropdown: false },
+                    { label: "Apply Now", url: "#", hasDropdown: false }
+                ],
+                rightButtons: [
+                    { label: "Fee Payment", url: "#" },
+                    { label: "Campus Life", url: "#" }
+                ]
+            },
 
             gateway: {
-                title: "Gateway To Great Careers",
+                title: "Welcome to Our Career & Placement Centre",
                 description: [
                     "Your future begins here. Our Placement Cell is dedicated to guiding students from classrooms to careers, connecting talent with opportunities, and shaping leaders for tomorrow. With strong industry partnerships and personalized training, we ensure every student is prepared to step confidently into the professional world."
                 ],
@@ -28,37 +55,30 @@
                 title: "Director's Message",
                 director: {
                     name: "Dr. N. Venkata Sastry",
-                    position: "Director",
-                    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300",
-                    email: "director@tpd.srmtrichy.edu.in",
-                    phone: "+91-4346-176-191-193"
+                    position: "Director, Career Centre",
+                    image: "./assets/images/director.jpg",
+                    phone: "T: +91-44 -27455774 (D) / 27452270 Extn: 7301"
                 },
                 message: [
                     "At our institution, we believe placements are not just about jobs — they are about building careers. Our focus is on nurturing skills, confidence, and professionalism so that students excel in competitive environments. Together with faculty, alumni, and recruiters, we create a supportive ecosystem for success."
                 ],
                 quickLinks: [
-                    { label: "Catapulting Careers", url: "catapulting-careers.html" },
-                    { label: "Admissions", url: "#" },
-                    { label: "Library", url: "#" },
-                    { label: "Industrial Collaborations", url: "#" },
-                    { label: "Hostels", url: "#" },
-                    { label: "Canteen", url: "#" },
-                    { label: "Mess Food Shed", url: "#" },
-                    { label: "Contact", url: "#" }
+                        { label: "Catapulting Careers", url: "./catapulting-careers.html" },
+                        { label: "Activities", url: "./activities.html" },
+                        { label: "Placement Statistics", url: "./placement_stats.html" },
+                        { label: "Industrial Collaborations", url: "./mou.html" },
+                        { label: "Career Development Centre", url: "./cdc.html" },
+                        { label: "Meet Our Staff", url: "./staff.html" },
+                        { label: "Contact", url: "./contact.html" }
                 ]
             },
             whyChooseSRM: {
                 title: "Why Choose SRM?",
                 reasons: [
-                    { icon: "fa-check-circle", text: "Co-educational team for Engineering, Management, Science & Humanities, Medical Sciences, Law and Agricultural Sciences", column: 1 },
-                    { icon: "fa-check-circle", text: "Hub for High-Paying Recruiters", column: 1 },
-                    { icon: "fa-check-circle", text: "Major recruiters from Fortune 500 list", column: 1 },
-                    { icon: "fa-check-circle", text: "Highest number of Core Companies", column: 1 },
-                    { icon: "fa-check-circle", text: "Specialised Training programs", column: 1 },
-                    { icon: "fa-check-circle", text: "Well-Appreciated Industry Immersion Programmes", column: 2 },
-                    { icon: "fa-check-circle", text: "Active IDEA (MOOCs and 50 Centres of Excellence Inside campus)", column: 2 },
-                    { icon: "fa-check-circle", text: "Never-Ending Making Clubs to the Categories Ahead", column: 2 },
-                    { icon: "fa-check-circle", text: "150000+ Hours of Professional Skills", column: 2 }
+                    { icon: "fa-check-circle", text: "Centralized placement team with dedicated coordinators", column: 1 },
+                    { icon: "fa-check-circle", text: "Strong alumni network across Fortune 500 companies", column: 1 },
+                    { icon: "fa-check-circle", text: "Proven track record of successful placements", column: 1 },
+                    { icon: "fa-check-circle", text: "Personalized mentoring and career guidance", column: 1 }
                 ]
             },
 
@@ -128,7 +148,68 @@
         // FUNCTION-BASED WEBSITE BUILDER
         // ============================================
 
-        
+        // Build Top Banner
+        function buildTopBanner(data) {
+            const banner = document.getElementById('topBanner');
+            const { message, applyLink, secondaryNav } = data;
+
+            let html = `
+                <center class="top-bar">
+                    <span>${message} <a href="${applyLink}" class="apply-link">Apply Now</a></span>
+                    <div class="secondary-nav-container">
+            `;
+
+            secondaryNav.forEach(item => {
+                html += `<a href="${item.url}">${item.label}</a>`;
+            });
+
+            html += `</div></center>`;
+            banner.innerHTML = html;
+        }
+
+        // Build Navigation
+        function buildNavigation(data) {
+            const navMenu = document.getElementById('navMenu');
+            const navButtons = document.getElementById('navButtons');
+            const mobileMenuContent = document.getElementById('mobileMenuContent');
+
+            // Desktop Navigation
+            let navHtml = '';
+            data.mainNav.forEach(item => {
+                if (item.hasDropdown) {
+                    navHtml += `
+                        <div class="nav-dropdown">
+                            <a href="${item.url}" class="nav-link">${item.label} <i class="fas fa-chevron-down"></i></a>
+                        </div>
+                    `;
+                } else {
+                    navHtml += `<a href="${item.url}" class="nav-link">${item.label}</a>`;
+                }
+            });
+            navMenu.innerHTML = navHtml;
+
+            // Navigation Buttons
+            let buttonsHtml = '';
+            data.rightButtons.forEach(btn => {
+                buttonsHtml += `<button class="nav-btn">${btn.label}</button>`;
+            });
+            navButtons.innerHTML = buttonsHtml;
+
+            // Mobile Menu
+            let mobileHtml = '';
+            data.mainNav.forEach(item => {
+                mobileHtml += `<a href="${item.url}" class="mobile-nav-link">${item.label}</a>`;
+            });
+
+            mobileHtml += `
+                <div class="mobile-contact">
+                    <h3>Get in touch</h3>
+                    <a href="tel:${websiteData.siteConfig.contactPhone}" class="contact-link">${websiteData.siteConfig.contactPhone}</a>
+                    <a href="mailto:${websiteData.siteConfig.helpdeskEmail}" class="contact-link">${websiteData.siteConfig.helpdeskEmail}</a>
+                </div>
+            `;
+            mobileMenuContent.innerHTML = mobileHtml;
+        }
 
         // Build Gateway Section
         function buildGateway(data) {
@@ -141,6 +222,8 @@
             });
 
             html += `</div><div class="stats-grid">`;
+            
+            
 
             data.stats.forEach(stat => {
                 html += `
@@ -149,7 +232,7 @@
                             <i class="fas ${stat.icon}"></i>    
                         </div>
                         <div class="stats-content">
-                            <h3  ><span class="stats-count" data-target="${stat.count}">${stat.count}</span><span class="lpa">${stat.suffix}</span></h3>
+                            <h3><span class="stats-count" data-target="${stat.count}">${stat.count}</span><span class="lpa">${stat.suffix}</span></h3>
                             <p class="stats-label">${stat.label}</p>    
                         </div>
                     </div>
@@ -171,7 +254,7 @@
                     <img src="${director.image}" alt="${director.name}">
                     <h3>${director.name}</h3>
                     <p>${director.position}</p>
-                    <p class="director-contact">Email: ${director.email}<br>Phone: ${director.phone}</p>
+                    <p>Phone: ${director.phone}</p>
                 </div>
                 <div>
                 <h2 class="Director-title">${title}</h2>
@@ -378,7 +461,52 @@
             });
         }
 
-       
+        // Initialize Mobile Menu
+        function initializeMobileMenu() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+            if (mobileMenuToggle && mobileMenu && mobileMenuClose) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.add('active');
+                });
+
+                mobileMenuClose.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                        mobileMenu.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        // Initialize Additional Features
+        function initializeAdditionalFeatures() {
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 100) {
+                    navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+                } else {
+                    navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                }
+            });
+        }
 
         // ============================================
         // MAIN INITIALIZATION
@@ -389,7 +517,8 @@
             document.title = websiteData.siteConfig.title;
 
             // Build all sections
-          
+            buildTopBanner(websiteData.topBanner);
+            buildNavigation(websiteData.navigation);
             buildGateway(websiteData.gateway);
             buildDirectorMessage(websiteData.directorMessage);
             buildWhyChooseSRM(websiteData.whyChooseSRM);
@@ -398,6 +527,7 @@
             buildJourney(websiteData.journey);
 
             // Initialize features
+            initializeMobileMenu();
             initializeScrollAnimations();
             initializeCounterAnimations();
             initializeAdditionalFeatures();
